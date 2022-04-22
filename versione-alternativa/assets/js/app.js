@@ -62,8 +62,11 @@ const app = new Vue({
             element = event.target;
             
             let index = element.getAttribute('data-index');
-            this.tasks[index].done = true;
+            this.tasks[index].done = !this.tasks[index].done;
             
+        },
+        completeTask(taskIndex){
+            this.tasks.splice(taskIndex,1)     
         }
 
         
