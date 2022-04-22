@@ -59,6 +59,13 @@ const app = new Vue({
                 text:"",
                 done: false,
             }
+        },
+        doneTask(event){
+            element = event.target;
+            
+            let index = element.getAttribute('data-index');
+            this.tasks[index].done = true;
+            
         }
 
         
