@@ -20,13 +20,24 @@
 
     <div id="app">
         <div class="container">
-            <h2>Add new Task:</h2>
-            <input  v-model="newTask.text"  @keyup.enter="addNewTask" type="text" >
-            <button @click="addNewTask">Add new Task</button>
-            <h2>Todo List:</h2>
-            <ul>
-                <li :data-index="taskIndex" @click="doneTask" :class="task.done === true ? 'task_done' : ''  " v-for="(task, taskIndex) in tasks">{{task.text}} <i class="fa-solid fa-times-circle" @click="removeTask"></i></li>
-            </ul>
+            <div class="logo">
+                <img width="400px" src="https://hiringplatform.boolean.careers/images/logo.png" alt="">
+            </div>
+
+            <section class="add_new_task">
+                <input v-model="newTask.text" @keyup.enter="addNewTask" type="text">
+                <button @click="addNewTask">Add new Task</button>
+
+            </section>
+
+            <section class="todo_list">
+                <h2>Todo List:</h2>
+                <ul>
+                    <li :data-index="taskIndex" @click="doneTask" :class="task.done === true ? 'task_done' : ''  "
+                        v-for="(task, taskIndex) in tasks">{{task.text}} <i class="fa-solid fa-times-circle"
+                            @click="removeTask"></i></li>
+                </ul>
+            </section>
         </div>
 
     </div>
