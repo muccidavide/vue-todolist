@@ -30,7 +30,7 @@
 
             </section>
 
-            <section class="todo_list">
+            <section v-if="tasks.length > 0" class="todo_list">
                 <h2>Todo List:</h2>
                 <ul>
                     <li :data-index="taskIndex" @click="doneTask" :class="task.done === true ? 'task_done' : ''  "
@@ -39,6 +39,7 @@
                     </li>
                 </ul>
             </section>
+            <p v-else> Aggiungi ora una nuova task pigrone!😉</p>
         </div>
 
     </div>
