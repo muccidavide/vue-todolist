@@ -20,8 +20,9 @@
 
     <div id="app">
         <div class="container">
+            <h2>Todo List:</h2>
             <ul>
-                <li :class="task.done === true ? 'task_done' : ''  " v-for="task in tasks">{{task.text}}</li>
+                <li :class="task.done === true ? 'task_done' : ''  " v-for="(task, task_index) in tasks">{{task.text}} <i class="fa-solid fa-times-circle" @click="removeTask"></i></li>
             </ul>
         </div>
 
