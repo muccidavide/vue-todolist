@@ -20,33 +20,36 @@ const app = new Vue({
     data: {
         newTask:{
             text:"",
-            done: false,
+            done: "to_do_task",
         },
         tasks: [{
                 text: "Studiare Vuejs",
-                done: false
+                done: "to_do_task",
             },
             {
                 text: "Fare la spesa",
-                done: true
+                done: "done_task",
             },
             {
                 text: "Portare il cane al parco",
-                done: true
+                done: "trash_task",
             },
             {
                 text: "Studiare Javascript",
-                done: true
+                done: "done_task",
             },
             {
                 text: "Studiare ancora VueJs",
-                done: false
+                done: "to_do_task",
             },
         ],
     },
     methods:{
-        removeTask(taskIndex){
-            this.tasks.splice(taskIndex,1)     
+        removeTask(event){
+            element = event.target;
+            let index = element.getAttribute('data-index');
+            this.tasks[index].done = "trash_task";
+            /* this.tasks.splice(taskIndex,1) */     
 
         },
         addNewTask(){
@@ -55,7 +58,7 @@ const app = new Vue({
             }
             this.newTask = {
                 text:"",
-                done: false,
+                done:"to_do_task",
             }
         },
         doneTask(event){
@@ -64,10 +67,10 @@ const app = new Vue({
             let index = element.getAttribute('data-index');
             console.log(this.tasks[index].done);
 
-            if (this.tasks[index].done) {
-                this.tasks[index].done = false;
+            if (this.tasks[index].done === "done_task") {
+                this.tasks[index].done = "to_do_task";
             } else {
-                this.tasks[index].done = true; 
+                this.tasks[index].done = "done_task"; 
             }
    
         },
