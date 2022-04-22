@@ -33,9 +33,11 @@
             <section v-if="tasks.length > 0" class="todo_list">
                 <h2>Todo List:</h2>
                 <ul>
-                    <li :data-index="taskIndex" @click="doneTask" :class="task.done === true ? 'task_done' : ''  "
-                        v-for="(task, taskIndex) in tasks">{{task.text}} <i class="fa-solid fa-trash"
-                            @click="removeTask"></i><i :class="task.done === true ? 'task_checked' : ''  " class="fa-regular fa-square-check" @click="removeTask"></i>
+                    <li
+                        v-for="(task, taskIndex) in tasks">
+                        <span :data-index="taskIndex" @click="doneTask" :class="task.done ? 'task_done' : ''  ">{{task.text}} </span>
+                        <i class="fa-solid fa-trash" @click="removeTask"></i>
+                        <i :data-index="taskIndex"  v-on:click="doneTask" :class="task.done === true ? 'task_checked' : '' " class="fa-regular fa-square-check" ></i>
                     </li>
                 </ul>
             </section>

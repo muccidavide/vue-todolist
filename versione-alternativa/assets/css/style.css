@@ -52,16 +52,20 @@ li{
     
 }
 
-.todo_list li > i{
-    margin-left: 1rem;
-    text-align: right;
-    
-}
-
 .task_done{
     text-decoration-line: line-through;
 }
 
+.todo_list li i{
+    margin-left: 1rem;
+    text-align: right;
+    text-decoration-line: none;
+    
+}
+
+
+
 .task_checked{
+    text-decoration: none;
     color: gold;
 }
