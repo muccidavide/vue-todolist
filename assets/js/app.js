@@ -20,6 +20,10 @@ Bonus:
 const app = new Vue({
     el: '#app',
     data: {
+        newTask:{
+            text:"",
+            done: false,
+        },
         tasks: [{
                 text: "Studiare Vuejs",
                 done: false
@@ -42,12 +46,21 @@ const app = new Vue({
             },
         ],
     },
-    methods: {
-        removeTask(task_index){
-            console.log('remove');
-            console.log(this.tasks);
-            this.tasks.splice(task_index,1)     
+    methods:{
+        removeTask(taskIndex){
+            this.tasks.splice(taskIndex,1)     
 
+        },
+        addNewTask(){
+            if (this.newTask.text !== "") {
+                this.tasks.push(this.newTask);
+            }
+            this.newTask = {
+                text:"",
+                done: false,
+            }
         }
+
+        
     }
 })

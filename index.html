@@ -20,9 +20,12 @@
 
     <div id="app">
         <div class="container">
+            <h2>Add new Task:</h2>
+            <input v-model="newTask.text"  @keyup.enter="addNewTask" type="text" >
+            <button @click="addNewTask">Add new Task</button>
             <h2>Todo List:</h2>
             <ul>
-                <li :class="task.done === true ? 'task_done' : ''  " v-for="(task, task_index) in tasks">{{task.text}} <i class="fa-solid fa-times-circle" @click="removeTask"></i></li>
+                <li :class="task.done === true ? 'task_done' : ''  " v-for="(task, taskIndex) in tasks">{{task.text}} <i class="fa-solid fa-times-circle" @click="removeTask"></i></li>
             </ul>
         </div>
 
