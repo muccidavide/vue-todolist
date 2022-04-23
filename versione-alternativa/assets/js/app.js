@@ -48,8 +48,13 @@ const app = new Vue({
         removeTask(event){
             element = event.target;
             let index = element.getAttribute('data-index');
-            this.tasks[index].done = "trash_task";
-            /* this.tasks.splice(taskIndex,1) */     
+
+            if (this.tasks[index].done === "trash_task") {
+        
+                 this.tasks.splice(index,1)     
+            } else {
+                this.tasks[index].done = "trash_task";
+            }
 
         },
         addNewTask(){
@@ -63,18 +68,21 @@ const app = new Vue({
         },
         doneTask(event){
             element = event.target;
-            console.log(element);
             let index = element.getAttribute('data-index');
-            console.log(this.tasks[index].done);
 
-            if (this.tasks[index].done === "done_task") {
-                this.tasks[index].done = "to_do_task";
-            } else {
-                this.tasks[index].done = "done_task"; 
+            if (this.tasks[index].done === "to_do_task") {
+                this.tasks[index].done = "done_task";
+            } else if(this.tasks[index].done === "done_task") {
+                this.tasks[index].done = "to_do_task"; 
+            } else{
+                this.tasks[index].done = "to_do_task"; 
             }
    
         },
+        emptyBin(){
 
-        
+            this.tasks = this.tasks.filter(task => task.done != 'trash_task');
+
+        }        
     }
 })

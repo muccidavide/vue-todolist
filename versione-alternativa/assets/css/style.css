@@ -25,7 +25,8 @@ body {
 }
 
 .add_new_task input,
-.add_new_task button {
+.add_new_task button,
+.empty_bin {
     padding: 0.5rem;
 
     border-radius: 10px;
@@ -77,6 +78,11 @@ li {
     text-align: right;
     text-decoration-line: none;
 
+}
+
+.bin{
+    display: flex;
+    justify-content: space-between;
 }
 
 
