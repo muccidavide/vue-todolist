@@ -25,22 +25,27 @@ const app = new Vue({
         tasks: [{
                 text: "Studiare Vuejs",
                 done: "to_do_task",
+                category:"study",
             },
             {
                 text: "Fare la spesa",
                 done: "done_task",
+                category:"home",
             },
             {
                 text: "Portare il cane al parco",
                 done: "trash_task",
+                category:"home",
             },
             {
                 text: "Studiare Javascript",
                 done: "done_task",
+                category:"study",
             },
             {
                 text: "Studiare ancora VueJs",
                 done: "to_do_task",
+                category:"study",
             },
         ],
     },
@@ -58,13 +63,18 @@ const app = new Vue({
 
         },
         addNewTask(){
+            if (this.newTask.category == "") {
+                this.newTask.category = "general"
+            }
             if (this.newTask.text !== "") {
                 this.tasks.push(this.newTask);
             }
             this.newTask = {
                 text:"",
                 done:"to_do_task",
+                category: ""
             }
+
         },
         doneTask(event){
             element = event.target;

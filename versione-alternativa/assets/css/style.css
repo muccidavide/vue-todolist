@@ -67,6 +67,8 @@ li {
     margin-top: 0.8rem;
     cursor: pointer;
     list-style-type: none;
+    display: flex;
+    justify-content: space-between;
 
 }
 
@@ -78,8 +80,13 @@ li > input {
     color: black;
     font-family: 'Poppins', sans-serif;
     font-size: large;
-    width: 87%;
+    width: 70%;
     
+}
+
+li > div{
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -88,7 +95,7 @@ li > input {
 }
 
 .general_list li i {
-    margin-left: 1rem;
+    margin: 0  1rem;
     text-align: right;
     text-decoration-line: none;
 

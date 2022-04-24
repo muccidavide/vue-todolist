@@ -24,53 +24,93 @@
                 <img width="400px" src="https://hiringplatform.boolean.careers/images/logo.png" alt="">
             </div>
 
-            <section  class="add_new_task">
+            <section class="add_new_task">
                 <input v-model="newTask.text" @keyup.enter="addNewTask" type="text" placeholder="Add here a new task!">
+
+                <label for="category">Choose Category:</label>
+
+
+                <select v-model="newTask.category" name="category" id="category">
+                    <option value="general" selected>General</option>
+                    <option value="work">Work</option>
+                    <option value="work">Study</option>
+                    <option value="work">Home</option>
+                    <option value="work">Hobby</option>
+                    <option value="work">Family</option>
+                </select>
                 <button @click="addNewTask">Add new Task</button>
-                
+
 
             </section>
 
             <section v-if="tasks.length > 0" class="general_list to_do_list">
                 <h2>To do list:</h2>
                 <ul>
-                    <li
-                        v-for="(task, taskIndex) in tasks"  v-if="task.done === 'to_do_task'">
-                        <input :value="task.text" :data-index="taskIndex" :class="task.done === 'done_task' ? 'task_done' : ''  "></input>
-                        <i :data-index="taskIndex" class="fa-solid fa-trash" @click="removeTask"></i>
-                        <i :data-index="taskIndex"  v-on:click="doneTask" :class="task.done === 'done_task' ? 'task_checked' : '' " class="fa-regular fa-square-check" ></i>
+                    <li v-for="(task, taskIndex) in tasks" v-if="task.done === 'to_do_task'">
+                        <input :value="task.text" :data-index="taskIndex"
+                            :class="task.done === 'done_task' ? 'task_done' : ''  ">
+                        </input>
+                        <div>
+                            <i :data-index="taskIndex" class="fa-solid fa-trash" @click="removeTask"></i>
+                            <i :data-index="taskIndex" v-on:click="doneTask"
+                                :class="task.done === 'done_task' ? 'task_checked' : '' "
+                                class="fa-regular fa-square-check"></i>
+                            <span :class="task.category">#{{task.category}}</span>
+
+                        </div>
+
                     </li>
                 </ul>
-                
+
             </section>
             <p v-else=> Aggiungi ora una nuova task pigrone!😉</p>
 
             <section v-if="tasks.length > 0" class="general_list done_list">
                 <h2>Completed:</h2>
                 <ul>
-                    <li
-                        v-for="(task, taskIndex) in tasks"  v-if="task.done === 'done_task'">
-                        <input :value="task.text" :data-index="taskIndex" :class="task.done === 'done_task' ? 'task_done' : ''  "></input>
-                        <i :data-index="taskIndex" class="fa-solid fa-trash" @click="removeTask"></i>
-                        <i v-if :data-index="taskIndex"  v-on:click="doneTask" :class="task.done === 'done_task' ? 'task_checked' : '' " class="fa-regular fa-square-check" ></i>
-                        
+                    <li v-for="(task, taskIndex) in tasks" v-if="task.done === 'done_task'">
+                        <input :value="task.text" :data-index="taskIndex"
+                            :class="task.done === 'done_task' ? 'task_done' : ''  ">
+                        </input>
+                        <div>
+
+
+                            <i :data-index="taskIndex" class="fa-solid fa-trash" @click="removeTask"></i>
+                            <i v-if :data-index="taskIndex" v-on:click="doneTask"
+                                :class="task.done === 'done_task' ? 'task_checked' : '' "
+                                class="fa-regular fa-square-check">
+                            </i>
+                            <span :class="task.category">#{{task.category}}</span>
+
+                        </div>
                     </li>
                 </ul>
             </section>
 
             <section v-if="tasks.length > 0" class="general_list trash_list">
                 <div class="bin">
-                    <h2>Bin:</h2> 
-                <button class="empty_bin" @click="emptyBin">Delete all items in the bin</button>
+                    <h2>Bin:</h2>
+                    <button class="empty_bin" @click="emptyBin">Delete all items in the bin</button>
 
                 </div>
-                
+
                 <ul>
-                    <li
-                        v-for="(task, taskIndex) in tasks"  v-if="task.done === 'trash_task'">
-                        <input :value="task.text" :data-index="taskIndex" :class="task.done === 'trash_task'  ? 'task_done' : ''  "></input>
-                        <i :data-index="taskIndex" class="fa-solid fa-xmark" @click="removeTask"></i>
-                        <i :data-index="taskIndex"  v-on:click="doneTask" :class="task.done === 'done_task' ? 'task_checked' : '' " class="fa-solid fa-arrow-rotate-left" ></i>
+                    <li v-for="(task, taskIndex) in tasks" v-if="task.done === 'trash_task'">
+                        <input :value="task.text" :data-index="taskIndex"
+                            :class="task.done === 'trash_task'  ? 'task_done' : ''  ">
+                        </input>
+                        <div>
+
+
+                            <i :data-index="taskIndex" class="fa-solid fa-xmark" @click="removeTask"></i>
+                            <i :data-index="taskIndex" v-on:click="doneTask"
+                                :class="task.done === 'done_task' ? 'task_checked' : '' "
+                                class="fa-solid fa-arrow-rotate-left">
+                            </i>
+                            <span :class="task.category">#{{task.category}}</span>
+
+                            <div>
+
 
                     </li>
                 </ul>
