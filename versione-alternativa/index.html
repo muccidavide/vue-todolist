@@ -36,7 +36,7 @@
                 <ul>
                     <li
                         v-for="(task, taskIndex) in tasks"  v-if="task.done === 'to_do_task'">
-                        <span :data-index="taskIndex" @click="doneTask" :class="task.done === 'done_task' ? 'task_done' : ''  ">{{task.text}} </span>
+                        <input :value="task.text" :data-index="taskIndex" :class="task.done === 'done_task' ? 'task_done' : ''  "></input>
                         <i :data-index="taskIndex" class="fa-solid fa-trash" @click="removeTask"></i>
                         <i :data-index="taskIndex"  v-on:click="doneTask" :class="task.done === 'done_task' ? 'task_checked' : '' " class="fa-regular fa-square-check" ></i>
                     </li>
@@ -50,7 +50,7 @@
                 <ul>
                     <li
                         v-for="(task, taskIndex) in tasks"  v-if="task.done === 'done_task'">
-                        <span :data-index="taskIndex" @click="doneTask" :class="task.done === 'done_task' ? 'task_done' : ''  ">{{task.text}} </span>
+                        <input :value="task.text" :data-index="taskIndex" :class="task.done === 'done_task' ? 'task_done' : ''  "></input>
                         <i :data-index="taskIndex" class="fa-solid fa-trash" @click="removeTask"></i>
                         <i v-if :data-index="taskIndex"  v-on:click="doneTask" :class="task.done === 'done_task' ? 'task_checked' : '' " class="fa-regular fa-square-check" ></i>
                         
@@ -68,7 +68,7 @@
                 <ul>
                     <li
                         v-for="(task, taskIndex) in tasks"  v-if="task.done === 'trash_task'">
-                        <span :data-index="taskIndex" @click="doneTask" :class="task.done === 'trash_task'  ? 'task_done' : ''  ">{{task.text}} </span>
+                        <input :value="task.text" :data-index="taskIndex" :class="task.done === 'trash_task'  ? 'task_done' : ''  "></input>
                         <i :data-index="taskIndex" class="fa-solid fa-xmark" @click="removeTask"></i>
                         <i :data-index="taskIndex"  v-on:click="doneTask" :class="task.done === 'done_task' ? 'task_checked' : '' " class="fa-solid fa-arrow-rotate-left" ></i>
 
