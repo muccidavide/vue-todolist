@@ -21,6 +21,7 @@ const app = new Vue({
         newTask:{
             text:"",
             done: "to_do_task",
+            category: "general"
         },
         tasks: [{
                 text: "Studiare Vuejs",
@@ -90,8 +91,11 @@ const app = new Vue({
    
         },
         emptyBin(){
-
-            this.tasks = this.tasks.filter(task => task.done != 'trash_task');
+            const deleteMessage = confirm('Are yoo sure to delete all items in the bin?')
+            if (deleteMessage) {
+                this.tasks = this.tasks.filter(task => task.done != 'trash_task');
+            }
+            
 
         }        
     }

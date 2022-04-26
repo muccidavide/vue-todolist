@@ -87,6 +87,7 @@ li > input {
 li > div{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 
